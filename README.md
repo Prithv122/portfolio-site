@@ -41,6 +41,7 @@ flowchart LR
 | Theming | CSS custom properties + `prefers-color-scheme` media query, JS only writes a `data-theme` override to `localStorage` | A JS-only theme system that sets all colors via inline styles | CSS handles the default (system preference) with zero JavaScript and no flash for the common case; JS is only in the critical path when a visitor explicitly overrides their system preference. |
 | Deploy root | `public/` subdirectory, not repo root | Deploying the whole repo root via `actions/upload-pages-artifact` | Keeps `README.md`, `NOTES.md`, `package.json`, etc. out of the public site — only what's meant to be served is served. |
 | Card copy | Hand-written one-line pitches + real measured numbers pulled from each repo's own README/PROGRESS notes (test counts, coverage, measured speedups) | Auto-generating cards from the GitHub API (repo description, stars) | The GitHub API has no place to put "25–28× faster than naive hashing, measured" — the numbers that actually make a project's README convincing are exactly what a generic API-driven card would drop. |
+| Lighthouse browser | `puppeteer`'s pinned, auto-downloaded Chromium, pointed to via `CHROME_PATH` (`scripts/run-lhci.js`) | Relying on `chrome-launcher`'s default host-search for an installed Chrome/Edge/Chromium | The default only works if the machine happens to have a browser installed — true in CI (GitHub's runners ship one) but not guaranteed on a clean local clone. Costs ~300MB in `node_modules`/cache for the guarantee that `npm install && npm run lhci` works identically everywhere, no implicit host dependency. |
 
 ## 5. Results
 
@@ -65,9 +66,11 @@ npm run validate   # HTML validation
 npm run lhci        # Lighthouse CI (performance/a11y/best-practices/seo gate)
 ```
 
-`npm run lhci` needs a system-installed Chrome, Edge, or Chromium — it uses `chrome-launcher`,
-which finds an existing browser rather than bundling one. GitHub Actions runners have Chrome
-preinstalled, so CI needs nothing extra; a local clone does need a browser present.
+`npm install` downloads a pinned Chromium build via `puppeteer` (a few hundred MB) — no
+system-installed Chrome/Edge required. `npm run lhci` runs through `scripts/run-lhci.js`,
+which points Lighthouse's browser launcher at that bundled Chromium (`CHROME_PATH`) instead of
+searching the host for one, so the exact same browser build runs locally, in CI, and on any
+clean clone.
 
 No build step — open `public/index.html` directly in a browser, or serve it with any static
 file server (e.g. `npx serve public`).
