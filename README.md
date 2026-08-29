@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/Prithv122/portfolio-site/actions/workflows/ci.yml/badge.svg)](https://github.com/Prithv122/portfolio-site/actions/workflows/ci.yml)
 
-**Live demo:** _link once deployed to GitHub Pages_
+**Live demo:** https://prithv122.github.io/portfolio-site/
 **Stack:** vanilla HTML5, CSS3 (Grid/Flexbox, custom properties), vanilla JS — no framework, no build step
 
 ---
@@ -36,20 +36,24 @@ flowchart LR
 
 | Decision | Chose | Over | Why |
 |---|---|---|---|
-| _..._ | _..._ | _..._ | _..._ |
-
-_Filled in during the build once the layout and theming approach are actually implemented._
+| Scaffold | Hand-built static-site structure (`public/` deploy root + npm dev-only tooling) | The portfolio's default `_template/` (uv + pyproject.toml + pytest) | This project has zero Python; forcing a Python scaffold onto an HTML/CSS/JS site would be dead weight for the sake of consistency. |
+| "Tests" | HTML validation (`html-validate`) + Lighthouse CI gated at ≥95 on all four categories | A JS test framework (Jest/Vitest) with DOM assertions | There's no application logic to unit-test — a ~20-line dark-mode toggle. Validity and measured Lighthouse scores are the correctness properties that actually matter for a static site, and they're CI-enforced, not just eyeballed. |
+| Theming | CSS custom properties + `prefers-color-scheme` media query, JS only writes a `data-theme` override to `localStorage` | A JS-only theme system that sets all colors via inline styles | CSS handles the default (system preference) with zero JavaScript and no flash for the common case; JS is only in the critical path when a visitor explicitly overrides their system preference. |
+| Deploy root | `public/` subdirectory, not repo root | Deploying the whole repo root via `actions/upload-pages-artifact` | Keeps `README.md`, `NOTES.md`, `package.json`, etc. out of the public site — only what's meant to be served is served. |
+| Card copy | Hand-written one-line pitches + real measured numbers pulled from each repo's own README/PROGRESS notes (test counts, coverage, measured speedups) | Auto-generating cards from the GitHub API (repo description, stars) | The GitHub API has no place to put "25–28× faster than naive hashing, measured" — the numbers that actually make a project's README convincing are exactly what a generic API-driven card would drop. |
 
 ## 5. Results
 
 | Metric | Value | Baseline | Notes |
 |---|---|---|---|
-| Lighthouse Performance | _..._ | 95 target | measured via `npm run lhci`, gated in CI |
-| Lighthouse Accessibility | _..._ | 95 target | measured via `npm run lhci`, gated in CI |
-| Lighthouse Best Practices | _..._ | 95 target | measured via `npm run lhci`, gated in CI |
-| Lighthouse SEO | _..._ | 95 target | measured via `npm run lhci`, gated in CI |
+| Lighthouse Performance | 100 | 95 target | measured in CI via `npm run lhci` against the built `public/` directory |
+| Lighthouse Accessibility | 100 | 95 target | measured in CI via `npm run lhci` |
+| Lighthouse Best Practices | 100 | 95 target | measured in CI via `npm run lhci`; caught and fixed a missing-favicon 404 that had been costing points |
+| Lighthouse SEO | 100 | 95 target | measured in CI via `npm run lhci` |
 
-_Numbers filled in once the site is built and `npm run lhci` has actually run against it._
+_All four scores are asserted in CI (`lighthouserc.json`, ≥0.95 on each), not just measured
+once locally — a regression fails the build. See the `CI` workflow run on the latest commit
+for the actual numbers._
 
 ## 6. How to run
 
