@@ -19,13 +19,13 @@ Vanilla HTML5 / CSS3 / JS — no framework, no bundler. npm used only for two de
 
 ## Acceptance criteria
 
-- [ ] Semantic HTML (proper landmarks, heading hierarchy)
-- [ ] CSS Grid/Flexbox layout, no framework
-- [ ] Dark mode (respects `prefers-color-scheme`, toggle overrides it)
-- [ ] Lighthouse Performance/Accessibility/Best Practices/SEO all ≥ 95, CI-gated
-- [ ] Links all six shipped repos with real descriptions
-- [ ] Deployed and live on GitHub Pages
-- [ ] Ship gate passes (`/ship`)
+- [x] Semantic HTML (proper landmarks, heading hierarchy)
+- [x] CSS Grid/Flexbox layout, no framework
+- [x] Dark mode (respects `prefers-color-scheme`, toggle overrides it)
+- [x] Lighthouse Performance/Accessibility/Best Practices/SEO all ≥ 95, CI-gated — currently 100/100/100/100
+- [x] Links all six shipped repos with real descriptions
+- [x] Deployed and live on GitHub Pages — https://prithv122.github.io/portfolio-site/
+- [ ] Ship gate passes (`/ship`) — INTERVIEW.md/RESUME_BULLET.md still template placeholders
 
 ## Project-specific notes
 
