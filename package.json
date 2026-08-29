@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-site",
+  "private": true,
+  "scripts": {
+    "validate": "html-validate \"public/*.html\"",
+    "lhci": "lhci autorun"
+  },
+  "devDependencies": {
+    "html-validate": "11.10.0",
+    "@lhci/cli": "0.15.1"
+  }
+}
