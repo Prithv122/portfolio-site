@@ -65,6 +65,10 @@ npm run validate   # HTML validation
 npm run lhci        # Lighthouse CI (performance/a11y/best-practices/seo gate)
 ```
 
+`npm run lhci` needs a system-installed Chrome, Edge, or Chromium — it uses `chrome-launcher`,
+which finds an existing browser rather than bundling one. GitHub Actions runners have Chrome
+preinstalled, so CI needs nothing extra; a local clone does need a browser present.
+
 No build step — open `public/index.html` directly in a browser, or serve it with any static
 file server (e.g. `npx serve public`).
 
