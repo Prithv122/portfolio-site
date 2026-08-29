@@ -39,6 +39,29 @@ Keep it rough. Rough is the point.
   failing audit in the report before writing an explanation anywhere — the first guess (some
   best-practices audit not fully applying to a page with no forms) would have been wrong.
 
+### 2026-08-29 — post-ship: fix Chrome dependency, not just document it
+- **Tried:** documenting in the README that `npm run lhci` needs a system Chrome/Edge/Chromium
+  installed, since `chrome-launcher` only searches the host for one — treated it as an accepted
+  limitation and shipped.
+- **Broke:** nothing broke exactly, but it's a real gap — a clean clone on a browser-less
+  machine (a fresh CI container image, a minimal VM) would fail that step with no clear error.
+  Documenting a gap isn't the same as closing it, and the ship gate's own "clean-clone check"
+  item is supposed to mean the documented steps actually work, not just that their limits are
+  written down.
+- **Fixed by:** added `puppeteer` as a pinned devDependency — it downloads its own Chromium
+  build during `npm install` — and wrote `scripts/run-lhci.js` to resolve
+  `puppeteer.executablePath()` (async in puppeteer v23+, so this couldn't be a plain
+  `lighthouserc.json` value) and set `CHROME_PATH` before invoking `lhci autorun`.
+  `chrome-launcher` honors `CHROME_PATH` as an override ahead of its own host search.
+- **Verified, not assumed:** confirmed the fix actually changed behavior, not just added code —
+  the Lighthouse report's own `userAgent` string read `HeadlessChrome/152.0.0.0`, the exact
+  version puppeteer downloaded, proving it used the bundled binary rather than falling through
+  to whatever system Chrome happens to be on this machine.
+- **Learned:** "document the limitation" and "fix the limitation" read similar in a PR but
+  aren't the same thing, and the ship gate's clean-clone check is specifically there to catch
+  the difference. Worth carrying forward: when a gate item surfaces an implicit dependency,
+  the default response should be "can this be removed" before "how do I explain it."
+
 ---
 
 ## Rejected approaches
