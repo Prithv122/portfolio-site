@@ -3,23 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
   <title>Prithvi M — Portfolio</title>
-  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer portfolio — projects, repos, and case studies." />
+  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer portfolio — six shipped, tested, CI-verified projects with real measured results." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Prithvi M</h1>
-    <p>Data Scientist / AI Engineer / Data Engineer — project portfolio.</p>
-    <!-- theme toggle -->
+  <a class="skip-link" href="#projects">Skip to projects</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Prithvi M</h1>
+      <p class="tagline">Data Scientist · AI Engineer · Data Engineer · Data Analyst</p>
+      <p class="intro">
+        Six shipped, tested, CI-verified projects — each with real measured results, not
+        claimed ones. Source and numbers are all in the linked repos.
+      </p>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+        <span class="theme-toggle-label">Dark mode</span>
+      </button>
+    </div>
   </header>
-  <main>
-    <p>Project cards go here — populated from the shipped-repo list.</p>
-    <!-- project cards -->
+
+  <main id="projects" class="wrap">
+    <h2 class="section-heading">Projects</h2>
+    <ul class="project-grid">
+
+      <li class="project-card">
+        <article>
+          <h3>file-organiser</h3>
+          <p class="pitch">
+            Safe file-management engine — scan, organise, and dedupe with tiered hashing, a
+            transaction log with full undo, and protected-path guardrails.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>CLI design</li><li>Transactional correctness</li>
+          </ul>
+          <p class="stats">168 tests · 92% coverage · 25–28&times; faster dedupe than naive full hashing</p>
+          <a class="repo-link" href="https://github.com/Prithv122/file-organiser" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      </li>
+
+      <li class="project-card">
+        <article>
+          <h3>ledger-cli</h3>
+          <p class="pitch">
+            Double-entry finance ledger with a SQLite backend and a Rich terminal UI, plus
+            bank CSV import with idempotent deduplication.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>SQLite</li><li>Data modeling</li>
+          </ul>
+          <p class="stats">36 tests · 99% coverage</p>
+          <a class="repo-link" href="https://github.com/Prithv122/ledger-cli" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      </li>
+
+      <li class="project-card">
+        <article>
+          <h3>async-crawler</h3>
+          <p class="pitch">
+            Async scraper and link checker — bounded concurrency, robots.txt compliance,
+            per-host rate limiting, and exponential backoff on retryable errors.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>asyncio</li><li>httpx</li>
+          </ul>
+          <p class="stats">82 tests · 100% coverage · 5.3&times; concurrency speedup, measured</p>
+          <a class="repo-link" href="https://github.com/Prithv122/async-crawler" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      </li>
+
+      <li class="project-card">
+        <article>
+          <h3>logstats</h3>
+          <p class="pitch">
+            Streaming log parser and report generator, stdlib only — never materializes a
+            full log file in memory, even at millions of lines.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>Stdlib only</li><li>Streaming</li>
+          </ul>
+          <p class="stats">28 tests · 99% coverage</p>
+          <a class="repo-link" href="https://github.com/Prithv122/logstats" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      </li>
+
+      <li class="project-card">
+        <article>
+          <h3>filetx</h3>
+          <p class="pitch">
+            Transactional undo engine for batch file operations, published as a real PyPI
+            package — journal-before-apply ordering, idempotent recovery.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>Packaging</li><li>PyPI</li>
+          </ul>
+          <p class="stats">73 tests · 100% coverage · published on PyPI</p>
+          <a class="repo-link" href="https://github.com/Prithv122/filetx" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="repo-link" href="https://pypi.org/project/filetx/" target="_blank" rel="noopener noreferrer">
+            View on PyPI <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      </li>
+
+      <li class="project-card">
+        <article>
+          <h3>pytemplate</h3>
+          <p class="pitch">
+            Reusable project scaffold generator — renders a pinned uv/ruff/pytest/CI
+            boilerplate set from Python string templates, no external dependency.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>Tooling</li><li>CI/CD</li>
+          </ul>
+          <p class="stats">98% coverage</p>
+          <a class="repo-link" href="https://github.com/Prithv122/pytemplate" target="_blank" rel="noopener noreferrer">
+            View on GitHub <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      </li>
+
+    </ul>
   </main>
-  <footer>
-    <!-- contact links -->
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Contact">
+        <a href="https://github.com/Prithv122" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/sai-mani-prithvi-raj-madhamsetty-b11ab8214/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </nav>
+      <p class="copyright">&copy; 2026 Prithvi M</p>
+    </div>
   </footer>
+
   <script src="js/theme.js" defer></script>
 </body>
 </html>
