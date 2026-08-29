@@ -22,6 +22,23 @@ Keep it rough. Rough is the point.
   the Python-heavy waves in mind; category B (web dev) projects need a different scaffold.
   Worth remembering for B2/B3/B4 too.
 
+### 2026-08-29 — build
+- **Tried:** opening `public/index.html` directly via `file://` in the Browser pane to check
+  the layout after writing it.
+- **Broke:** rendered with zero CSS/JS — plain unstyled serif text. The Browser pane treats a
+  local file outside the project folder as a "static snapshot" and doesn't load its linked
+  resources.
+- **Fixed by:** `npx serve public` and testing against `http://localhost` instead. That's when
+  the dark-mode toggle, grid layout, and all styling actually rendered and could be verified
+  (not just assumed from reading the CSS).
+- **Learned:** first full-content CI run scored Best Practices 0.96, not 1.0. Pulled the actual
+  Lighthouse report JSON instead of guessing why — the `errors-in-console` audit (weight 1) was
+  failing on a real browser console error: `favicon.ico` 404. Added `public/favicon.svg` (inline
+  SVG, no external asset) and re-ran; confirmed via the same report download that all four
+  categories hit 1.0. The general lesson: when a Lighthouse score isn't 1.0, find the specific
+  failing audit in the report before writing an explanation anywhere — the first guess (some
+  best-practices audit not fully applying to a page with no forms) would have been wrong.
+
 ---
 
 ## Rejected approaches
@@ -34,4 +51,5 @@ Keep it rough. Rough is the point.
 
 ## Open questions
 
-- [ ] Final visual design/layout — not started yet, this session only scaffolded.
+- [ ] Resume/CV PDF link in the footer — deferred, user will add later.
+- [ ] `INTERVIEW.md` / `RESUME_BULLET.md` still need answers before `/ship`.
