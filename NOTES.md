@@ -11,7 +11,7 @@ Keep it rough. Rough is the point.
 
 ### 2026-08-29 — scaffold
 - **Tried:** starting from the standard `_template/` (uv + pyproject.toml + pytest), per the
-  usual `/new-project` flow.
+  usual scaffolding flow.
 - **Broke:** nothing broke, but it was the wrong template — this project has zero Python. It's
   a static HTML/CSS/JS site deployed to GitHub Pages.
 - **Fixed by:** discarded the copied template, hand-built a static-site scaffold instead:
@@ -75,4 +75,4 @@ Keep it rough. Rough is the point.
 ## Open questions
 
 - [ ] Resume/CV PDF link in the footer — deferred, user will add later.
-- [ ] `INTERVIEW.md` / `RESUME_BULLET.md` still need answers before `/ship`.
+- [ ] `INTERVIEW.md` / `RESUME_BULLET.md` still need answers before shipping.

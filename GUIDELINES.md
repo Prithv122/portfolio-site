@@ -25,7 +25,7 @@ Vanilla HTML5 / CSS3 / JS — no framework, no bundler. npm used only for two de
 - [x] Lighthouse Performance/Accessibility/Best Practices/SEO all ≥ 95, CI-gated — currently 100/100/100/100
 - [x] Links all six shipped repos with real descriptions
 - [x] Deployed and live on GitHub Pages — https://prithv122.github.io/portfolio-site/
-- [ ] Ship gate passes (`/ship`) — INTERVIEW.md/RESUME_BULLET.md still template placeholders
+- [ ] Ship gate passes — INTERVIEW.md/RESUME_BULLET.md still template placeholders
 
 ## Project-specific notes
 
