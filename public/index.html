@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <title>Prithvi M — Portfolio</title>
-  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer / Data Analyst portfolio — 35 shipped, tested projects, grouped by role, each with a measured result from its own README." />
+  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer / Data Analyst portfolio — 36 shipped, tested projects, grouped by role, each with a measured result from its own README." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -18,7 +18,7 @@
       <h1>Prithvi M</h1>
       <p class="tagline">Data Scientist · AI Engineer · Data Engineer · Data Analyst</p>
       <p class="intro">
-        35 shipped, tested projects, grouped by the role they speak to. Every number on a card
+        36 shipped, tested projects, grouped by the role they speak to. Every number on a card
         comes from that repo's own README, where the method and the caveats sit next to it.
       </p>
       <nav class="group-nav" aria-label="Project groups">
@@ -153,7 +153,7 @@
 
     <section class="project-group" aria-labelledby="ai-engineering">
       <h2 id="ai-engineering" class="section-heading">AI engineering</h2>
-      <p class="section-intro">Retrieval, extraction and routing with LLMs, classical NLP and computer vision — each scored against ground truth, not eyeballed.</p>
+      <p class="section-intro">Retrieval, extraction, routing and judging with LLMs, classical NLP and computer vision — each scored against ground truth, not eyeballed.</p>
       <ul class="project-grid">
 
         <li class="project-card">
@@ -189,6 +189,24 @@
             </ul>
             <p class="stats">1,200 calls for $2.0528 · 100% grounded records in every arm, yet scope accuracy as low as 32%</p>
             <a class="repo-link" href="https://github.com/Prithv122/structured-extract" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>llm-eval-harness</h3>
+            <p class="pitch">
+              Tests an LLM judge against human labels before it may gate CI: a pre-registered
+              protocol, Cohen's kappa with cluster-bootstrap intervals, deterministic baselines
+              and a paired McNemar regression gate.
+            </p>
+            <ul class="tags">
+              <li>LLM-as-judge</li><li>Cohen's kappa</li><li>Ollama + Anthropic</li>
+            </ul>
+            <p class="stats">Pre-registered 7B judge not trustworthy on either task (&kappa; 0.335, 0.048) · Haiku 4.5 beat both rule baselines over 278 verdicts, yet no &kappa; lower bound reached 0.40 · every number replays offline</p>
+            <a class="repo-link" href="https://github.com/Prithv122/llm-eval-harness" target="_blank" rel="noopener noreferrer">
               View on GitHub <span aria-hidden="true">&rarr;</span>
             </a>
           </article>

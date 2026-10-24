@@ -23,7 +23,7 @@ Vanilla HTML5 / CSS3 / JS — no framework, no bundler. npm used only for two de
 - [x] CSS Grid/Flexbox layout, no framework
 - [x] Dark mode (respects `prefers-color-scheme`, toggle overrides it)
 - [x] Lighthouse Performance/Accessibility/Best Practices/SEO all ≥ 95, CI-gated — currently 100/100/100/100
-- [x] Links every shipped repo with real descriptions — 35 cards in four role groups as of 2026-10-24
+- [x] Links every shipped repo with real descriptions — 36 cards in four role groups as of 2026-10-25
 - [x] Deployed and live on GitHub Pages — https://prithv122.github.io/portfolio-site/
 - [x] Ship gate passes — INTERVIEW.md and RESUME_BULLET.md answered (2026-08-29, `55e53de`)
 

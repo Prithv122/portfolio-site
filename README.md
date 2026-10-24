@@ -18,8 +18,8 @@ explains what the projects are, in plain language, before they'll click into any
 ## 2. The data
 
 Not data-driven — the "content" is the project catalog itself (name, one-line pitch, tech stack,
-links) for each shipped repo, hand-written and updated as new projects ship. As of 2026-10-24 that
-is 35 cards in four groups, one per target role. Each card's stats line is copied from the linked
+links) for each shipped repo, hand-written and updated as new projects ship. As of 2026-10-25 that
+is 36 cards in four groups, one per target role. Each card's stats line is copied from the linked
 repo's own README §5, never from memory or a progress log.
 
 ## 3. Architecture
