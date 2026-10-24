@@ -97,6 +97,23 @@ Keep it rough. Rough is the point.
   written to disk (`LHCI_UPLOAD__TARGET=filesystem`) instead of uploaded to temporary public
   storage, so nothing about the unpublished page left the machine.
 
+### 2026-10-25 — llm-eval-harness card (36 cards)
+
+- Added `llm-eval-harness` to AI engineering, after `structured-extract` (the other LLM-evaluation card);
+  the section intro now says "routing and judging". Header text and meta description say 36.
+- **Stats line checked against the repo's README on public `main` (`07354f1`)**: the 7B judge's kappas, the 278
+  Haiku verdicts, "no kappa lower bound reached 0.40" and "every number replays offline" all appear there. The
+  test count (412) is in that repo's NOTES, not its README, so it stays off the card. The line leads with the
+  pre-registered verdict so it cannot read as "Haiku is a reliable judge".
+- **Checks:** `npm run validate` clean; local server render at 1350 px (dark) and 375 px (light): 36 cards, no
+  horizontal overflow, card inside the 24 px gutters, no console errors; the AI engineering jump link targets its
+  heading (the smooth-scroll animation stalls in the automation pane, so it was checked with instant scroll). All 46
+  unique outbound links answer: 44 with 200, LinkedIn 999 (its bot wall), and the #13 Streamlit app redirects
+  through its cookie handshake to a "gone to sleep, wake it" page, which a browser shows and curl cannot follow.
+- **CI replay in `node:22-bookworm` on a fresh clone of `68b4fd1`**, `ci.yml` steps in order, `npm ci` per job:
+  validate clean; Lighthouse CI passed every assertion, 100 / 100 / 100 / 100 on all three runs. Same differences
+  from the hosted runner as the 2026-10-24 entry (Debian, `--install-deps`, `--shm-size=2g`, filesystem upload).
+
 ---
 
 ## Rejected approaches
