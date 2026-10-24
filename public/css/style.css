@@ -127,6 +127,24 @@ button:focus-visible {
   color: var(--text-muted);
 }
 
+.group-nav ul {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+}
+
+.group-nav a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.group-nav a:hover {
+  text-decoration: underline;
+}
+
 #theme-toggle {
   margin-top: var(--space-3);
   display: inline-flex;
@@ -159,9 +177,20 @@ main {
   padding-block: var(--space-4) var(--space-5);
 }
 
+.project-group + .project-group {
+  margin-top: var(--space-5);
+}
+
 .section-heading {
   font-size: 1.5rem;
+  margin: 0 0 var(--space-1);
+  scroll-margin-top: var(--space-2);
+}
+
+.section-intro {
+  max-width: 42rem;
   margin: 0 0 var(--space-3);
+  color: var(--text-muted);
 }
 
 .project-grid {

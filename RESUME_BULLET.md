@@ -6,8 +6,8 @@ Form: **action → technical specifics → measured outcome.** Numbers or it doe
 
 ## Bullets
 
-- Built and deployed a portfolio site (vanilla HTML5/CSS3/JS, no framework) linking six
-  shipped, CI-tested repos, achieving Lighthouse scores of 100/100/100/100 (Performance,
+- Built and deployed a portfolio site (vanilla HTML5/CSS3/JS, no framework) linking 35
+  shipped, tested repos grouped by target role, achieving Lighthouse scores of 100/100/100/100 (Performance,
   Accessibility, Best Practices, SEO), enforced as a hard CI gate at ≥95 on every push, not
   just measured once.
 - Built a two-stage GitHub Actions pipeline (HTML validation, then Lighthouse CI) that caught
@@ -24,7 +24,7 @@ Form: **action → technical specifics → measured outcome.** Numbers or it doe
 
 None, honestly — this is the portfolio's own hub page, not a demonstration of any of the four
 target roles' technical skills (it's zero-Python, no data). Its job is to be the one link on
-the resume that makes the other six projects legible, not to earn a bullet of its own. If it
+the resume that makes the other projects legible, not to earn a bullet of its own. If it
 comes up in an interview, it's more likely as "and here's the site you're looking at right
 now" than as a rehearsed bullet.
 

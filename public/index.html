@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <title>Prithvi M — Portfolio</title>
-  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer portfolio — six shipped, tested, CI-verified projects with real measured results." />
+  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer / Data Analyst portfolio — 35 shipped, tested projects, grouped by role, each with a measured result from its own README." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -18,9 +18,17 @@
       <h1>Prithvi M</h1>
       <p class="tagline">Data Scientist · AI Engineer · Data Engineer · Data Analyst</p>
       <p class="intro">
-        Six shipped, tested, CI-verified projects — each with real measured results, not
-        claimed ones. Source and numbers are all in the linked repos.
+        35 shipped, tested projects, grouped by the role they speak to. Every number on a card
+        comes from that repo's own README, where the method and the caveats sit next to it.
       </p>
+      <nav class="group-nav" aria-label="Project groups">
+        <ul>
+          <li><a href="#data-science">Data science &amp; ML</a></li>
+          <li><a href="#ai-engineering">AI engineering</a></li>
+          <li><a href="#data-engineering">Data engineering</a></li>
+          <li><a href="#analytics-python">Analytics &amp; Python</a></li>
+        </ul>
+      </nav>
       <button id="theme-toggle" type="button" aria-pressed="false">
         <span class="theme-toggle-icon" aria-hidden="true"></span>
         <span class="theme-toggle-label">Dark mode</span>
@@ -29,115 +37,668 @@
   </header>
 
   <main id="projects" class="wrap">
-    <h2 class="section-heading">Projects</h2>
-    <ul class="project-grid">
 
-      <li class="project-card">
-        <article>
-          <h3>file-organiser</h3>
-          <p class="pitch">
-            Safe file-management engine — scan, organise, and dedupe with tiered hashing, a
-            transaction log with full undo, and protected-path guardrails.
-          </p>
-          <ul class="tags">
-            <li>Python</li><li>CLI design</li><li>Transactional correctness</li>
-          </ul>
-          <p class="stats">168 tests · 92% coverage · 25–28&times; faster dedupe than naive full hashing</p>
-          <a class="repo-link" href="https://github.com/Prithv122/file-organiser" target="_blank" rel="noopener noreferrer">
-            View on GitHub <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </li>
+    <section class="project-group" aria-labelledby="data-science">
+      <h2 id="data-science" class="section-heading">Data science &amp; ML</h2>
+      <p class="section-intro">Experiments, causal inference, forecasting, calibrated risk models, ranking and MLOps — most with hypotheses registered before the run.</p>
+      <ul class="project-grid">
 
-      <li class="project-card">
-        <article>
-          <h3>ledger-cli</h3>
-          <p class="pitch">
-            Double-entry finance ledger with a SQLite backend and a Rich terminal UI, plus
-            bank CSV import with idempotent deduplication.
-          </p>
-          <ul class="tags">
-            <li>Python</li><li>SQLite</li><li>Data modeling</li>
-          </ul>
-          <p class="stats">36 tests · 99% coverage</p>
-          <a class="repo-link" href="https://github.com/Prithv122/ledger-cli" target="_blank" rel="noopener noreferrer">
-            View on GitHub <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </li>
+        <li class="project-card">
+          <article>
+            <h3>ab-testing-kit</h3>
+            <p class="pitch">
+              Experiment design and analysis where every error-rate claim is measured by
+              simulation: power, peeking, group-sequential alpha spending, CUPED and a
+              Bayesian comparison.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>Experimentation</li><li>Statistics</li>
+            </ul>
+            <p class="stats">Simulated power 0.8007 at the designed n · 20 peeks turn a 5% false-positive rate into 24.7%</p>
+            <a class="repo-link" href="https://github.com/Prithv122/ab-testing-kit" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
 
-      <li class="project-card">
-        <article>
-          <h3>async-crawler</h3>
-          <p class="pitch">
-            Async scraper and link checker — bounded concurrency, robots.txt compliance,
-            per-host rate limiting, and exponential backoff on retryable errors.
-          </p>
-          <ul class="tags">
-            <li>Python</li><li>asyncio</li><li>httpx</li>
-          </ul>
-          <p class="stats">82 tests · 100% coverage · 5.3&times; concurrency speedup, measured</p>
-          <a class="repo-link" href="https://github.com/Prithv122/async-crawler" target="_blank" rel="noopener noreferrer">
-            View on GitHub <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </li>
+        <li class="project-card">
+          <article>
+            <h3>causal-uplift</h3>
+            <p class="pitch">
+              Own S-, T-, X- and DR-learners scored against a simulator with exact per-user
+              treatment effects, as confounding rises; three hypotheses pre-registered.
+            </p>
+            <ul class="tags">
+              <li>Causal inference</li><li>Uplift modeling</li><li>LightGBM</li>
+            </ul>
+            <p class="stats">Qini vs truth: X-learner 0.877 vs 0.480 for the response model · H1 supported, H2 and H3 not</p>
+            <a class="repo-link" href="https://github.com/Prithv122/causal-uplift" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
 
-      <li class="project-card">
-        <article>
-          <h3>logstats</h3>
-          <p class="pitch">
-            Streaming log parser and report generator, stdlib only — never materializes a
-            full log file in memory, even at millions of lines.
-          </p>
-          <ul class="tags">
-            <li>Python</li><li>Stdlib only</li><li>Streaming</li>
-          </ul>
-          <p class="stats">28 tests · 99% coverage</p>
-          <a class="repo-link" href="https://github.com/Prithv122/logstats" target="_blank" rel="noopener noreferrer">
-            View on GitHub <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </li>
+        <li class="project-card">
+          <article>
+            <h3>hier-forecasting</h3>
+            <p class="pitch">
+              Does reconciliation make every level of a hierarchy more accurate, or only
+              coherent? A rolling-origin backtest on the 111-series Australian tourism
+              hierarchy, with ETS, a LightGBM hybrid and own MinT linear algebra.
+            </p>
+            <ul class="tags">
+              <li>Forecasting</li><li>statsforecast</li><li>LightGBM</li>
+            </ul>
+            <p class="stats">MinT-shrink made the national total 9% worse (MASE 0.990 &rarr; 1.083) and the regions under 1% better</p>
+            <a class="repo-link" href="https://github.com/Prithv122/hier-forecasting" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
 
-      <li class="project-card">
-        <article>
-          <h3>filetx</h3>
-          <p class="pitch">
-            Transactional undo engine for batch file operations, published as a real PyPI
-            package — journal-before-apply ordering, idempotent recovery.
-          </p>
-          <ul class="tags">
-            <li>Python</li><li>Packaging</li><li>PyPI</li>
-          </ul>
-          <p class="stats">73 tests · 100% coverage · published on PyPI</p>
-          <a class="repo-link" href="https://github.com/Prithv122/filetx" target="_blank" rel="noopener noreferrer">
-            View on GitHub <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a class="repo-link" href="https://pypi.org/project/filetx/" target="_blank" rel="noopener noreferrer">
-            View on PyPI <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </li>
+        <li class="project-card">
+          <article>
+            <h3>fraud-calibrated</h3>
+            <p class="pitch">
+              Cost-sensitive credit-default risk model: class imbalance, isotonic
+              calibration, per-customer expected-cost thresholds, SHAP and drift checks.
+            </p>
+            <ul class="tags">
+              <li>LightGBM</li><li>Calibration</li><li>SHAP</li>
+            </ul>
+            <p class="stats">ECE 0.1600 &rarr; 0.0237 after calibration · 4.85% cheaper than the best single global threshold</p>
+            <a class="repo-link" href="https://github.com/Prithv122/fraud-calibrated" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
 
-      <li class="project-card">
-        <article>
-          <h3>pytemplate</h3>
-          <p class="pitch">
-            Reusable project scaffold generator — renders a pinned uv/ruff/pytest/CI
-            boilerplate set from Python string templates, no external dependency.
-          </p>
-          <ul class="tags">
-            <li>Python</li><li>Tooling</li><li>CI/CD</li>
-          </ul>
-          <p class="stats">98% coverage</p>
-          <a class="repo-link" href="https://github.com/Prithv122/pytemplate" target="_blank" rel="noopener noreferrer">
-            View on GitHub <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </li>
+        <li class="project-card">
+          <article>
+            <h3>recsys-ranking</h3>
+            <p class="pitch">
+              Six recommenders on MovieLens 1M under a global-time split, asking whether the
+              usual sampled-negative evaluation would have picked a different model to ship.
+            </p>
+            <ul class="tags">
+              <li>Recommender systems</li><li>Ranking metrics</li><li>Streamlit</li>
+            </ul>
+            <p class="stats">Full-catalogue NDCG@10 0.197 (BPR-MF) · popularity-sampled negatives: Kendall tau 0.07, 5 of 15 strong reversals</p>
+            <a class="repo-link" href="https://github.com/Prithv122/recsys-ranking" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
 
-    </ul>
+        <li class="project-card">
+          <article>
+            <h3>mlops-pipeline</h3>
+            <p class="pitch">
+              A credit-default model trained, versioned in an MLflow registry, served by
+              FastAPI and monitored with Evidently, plus an incident responder that names
+              which column broke and how.
+            </p>
+            <ul class="tags">
+              <li>MLflow</li><li>FastAPI</li><li>DVC</li>
+            </ul>
+            <p class="stats">Pre-registered: H1 failed (+0.050 vs +0.15 needed) · H2 passed, 1 false incident in 200 clean windows</p>
+            <a class="repo-link" href="https://github.com/Prithv122/mlops-pipeline" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="project-group" aria-labelledby="ai-engineering">
+      <h2 id="ai-engineering" class="section-heading">AI engineering</h2>
+      <p class="section-intro">Retrieval, extraction and routing with LLMs, classical NLP and computer vision — each scored against ground truth, not eyeballed.</p>
+      <ul class="project-grid">
+
+        <li class="project-card">
+          <article>
+            <h3>production-rag</h3>
+            <p class="pitch">
+              Hybrid BM25 + dense retrieval over DuckDB, dbt and Dagster documentation, with
+              cross-encoder reranking and cited answers, deployed on Cloud Run.
+            </p>
+            <ul class="tags">
+              <li>RAG</li><li>sentence-transformers</li><li>Cloud Run</li>
+            </ul>
+            <p class="stats">Reranking lifts nDCG@10 0.602 &rarr; 0.662 · 141 of 141 citation markers resolved</p>
+            <a class="repo-link" href="https://github.com/Prithv122/production-rag" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://production-rag-385330416945.asia-south1.run.app" target="_blank" rel="noopener noreferrer">
+              Live demo <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>structured-extract</h3>
+            <p class="pitch">
+              LLM extraction of DuckDB configuration settings from documentation prose,
+              scored field by field against the binary's own <code>duckdb_settings()</code>
+              as an exact oracle.
+            </p>
+            <ul class="tags">
+              <li>Pydantic v2</li><li>LLM evaluation</li><li>OpenRouter</li>
+            </ul>
+            <p class="stats">1,200 calls for $2.0528 · 100% grounded records in every arm, yet scope accuracy as low as 32%</p>
+            <a class="repo-link" href="https://github.com/Prithv122/structured-extract" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>classical-nlp</h3>
+            <p class="pitch">
+              TF-IDF vs LSA vs embeddings, Indic-aware text normalisation, and a cost-priced
+              comparison of a TF-IDF ticket router against a local 7B LLM router on Banking77.
+            </p>
+            <ul class="tags">
+              <li>scikit-learn</li><li>NLP</li><li>Ollama</li>
+            </ul>
+            <p class="stats">Calibrated TF-IDF router: 589.0 vs 939.0 cost per 1,000 tickets for the local 7B LLM (95% CI &minus;397.7 to &minus;299.3)</p>
+            <a class="repo-link" href="https://github.com/Prithv122/classical-nlp" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>custom-detector</h3>
+            <p class="pitch">
+              Weightlifting-plate detector: audited and re-split a public dataset after
+              finding train/test leakage, fine-tuned RF-DETR-S on Kaggle, scored on a capture
+              day the model never saw.
+            </p>
+            <ul class="tags">
+              <li>Computer vision</li><li>RF-DETR</li><li>Kaggle GPU</li>
+            </ul>
+            <p class="stats">Test mAP@50 0.953 · mAP@50&ndash;95 0.741 on a held-out capture date</p>
+            <a class="repo-link" href="https://github.com/Prithv122/custom-detector" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://huggingface.co/Prithv122/custom-detector" target="_blank" rel="noopener noreferrer">
+              Weights on Hugging Face <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>doc-scanner-ocr</h3>
+            <p class="pitch">
+              Classical OpenCV document scanner — edge detection, perspective correction,
+              CLAHE — feeding PaddleOCR, with no deep learning in the vision pipeline.
+            </p>
+            <ul class="tags">
+              <li>OpenCV</li><li>PaddleOCR</li><li>Python</li>
+            </ul>
+            <p class="stats">9/9 documents detected · corner IoU 0.975 · OCR recall 50% with CLAHE vs 2.2% with adaptive threshold</p>
+            <a class="repo-link" href="https://github.com/Prithv122/doc-scanner-ocr" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="project-group" aria-labelledby="data-engineering">
+      <h2 id="data-engineering" class="section-heading">Data engineering</h2>
+      <p class="section-intro">Batch and streaming pipelines, slowly changing dimensions, table formats, data quality, schema design and the services around them.</p>
+      <ul class="project-grid">
+
+        <li class="project-card">
+          <article>
+            <h3>elt-dbt-dagster</h3>
+            <p class="pitch">
+              Batch ELT of multi-city daily weather into Postgres, transformed by dbt Core
+              (staging, intermediate, marts) and orchestrated by Dagster in Docker Compose.
+            </p>
+            <ul class="tags">
+              <li>dbt</li><li>Dagster</li><li>PostgreSQL</li>
+            </ul>
+            <p class="stats">7,310 weather-days ingested for 10 cities · 32/32 dbt tests passing</p>
+            <a class="repo-link" href="https://github.com/Prithv122/elt-dbt-dagster" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>scd2-ingestion</h3>
+            <p class="pitch">
+              Incremental, idempotent SCD Type 2 ingestion that handles late-arriving and
+              out-of-order change events, with a randomized order-independence proof.
+            </p>
+            <ul class="tags">
+              <li>SCD Type 2</li><li>DuckDB</li><li>Idempotency</li>
+            </ul>
+            <p class="stats">500 of 500 random arrival orders of 4,115 events gave byte-identical history</p>
+            <a class="repo-link" href="https://github.com/Prithv122/scd2-ingestion" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>streaming-pipeline</h3>
+            <p class="pitch">
+              An order stream aggregated into 60-second windows per zone, measuring how long
+              to wait for late events: wait vs revise on a hand-written windowing core, with
+              Redpanda at the edge.
+            </p>
+            <ul class="tags">
+              <li>Redpanda</li><li>Kafka API</li><li>Streaming</li>
+            </ul>
+            <p class="stats">450-run sweep · the analytic model's predictions passed 369 of 369 checks</p>
+            <a class="repo-link" href="https://github.com/Prithv122/streaming-pipeline" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>lakehouse</h3>
+            <p class="pitch">
+              How much does an Iceberg table's layout change what a query has to read? Three
+              layouts, two ingest regimes, every planned file and byte counted from metadata,
+              plus a Delta Lake arm.
+            </p>
+            <ul class="tags">
+              <li>Apache Iceberg</li><li>Delta Lake</li><li>PyArrow</li>
+            </ul>
+            <p class="stats">Day partitioning planned 28.2&times; fewer bytes for a one-day query · 528/528 results matched the oracle</p>
+            <a class="repo-link" href="https://github.com/Prithv122/lakehouse" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>data-quality</h3>
+            <p class="pitch">
+              Eight kinds of fault injected at known batches into a warehouse-shaped stream,
+              scoring dbt tests, frozen thresholds and rolling thresholds on recall, false
+              alarms and time to detect.
+            </p>
+            <ul class="tags">
+              <li>Data quality</li><li>dbt</li><li>Iceberg</li>
+            </ul>
+            <p class="stats">Rolling thresholds caught 105/120 fault conditions vs 70/120 for the existing dbt tests</p>
+            <a class="repo-link" href="https://github.com/Prithv122/data-quality" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>schema-design</h3>
+            <p class="pitch">
+              A normalised Postgres schema for a library consortium, migrated by an
+              immutable-file runner and indexed only where <code>EXPLAIN (ANALYZE, BUFFERS)</code>
+              said it was worth it.
+            </p>
+            <ul class="tags">
+              <li>PostgreSQL</li><li>Indexing</li><li>Docker</li>
+            </ul>
+            <p class="stats">29 tests against a live Postgres · index tuning up to 112&times; faster, and 1.0&times; where a scan was right</p>
+            <a class="repo-link" href="https://github.com/Prithv122/schema-design" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>query-service</h3>
+            <p class="pitch">
+              A parameterised, allowlisted query API over a DuckDB TPC-H warehouse, with four
+              injection guards and a result cache shared by the CLI and the notebook.
+            </p>
+            <ul class="tags">
+              <li>DuckDB</li><li>SQL safety</li><li>Caching</li>
+            </ul>
+            <p class="stats">59 tests · 13 injection payloads all rejected · warm cache up to 22.1&times; faster</p>
+            <a class="repo-link" href="https://github.com/Prithv122/query-service" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>async-jobs</h3>
+            <p class="pitch">
+              Upload to a background arq/Redis worker, with status polling, idempotency keys
+              and webhooks retried with exponential backoff.
+            </p>
+            <ul class="tags">
+              <li>FastAPI</li><li>Redis</li><li>Task queues</li>
+            </ul>
+            <p class="stats">31 tests, 100% coverage, against a real Redis · 5-job batch done in 2.08 s vs 10.0 s sequential</p>
+            <a class="repo-link" href="https://github.com/Prithv122/async-jobs" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="project-group" aria-labelledby="analytics-python">
+      <h2 id="analytics-python" class="section-heading">Analytics &amp; Python development</h2>
+      <p class="section-intro">SQL, product analytics and data storytelling first, then the APIs, web platform work and Python tools underneath.</p>
+      <ul class="project-grid">
+
+        <li class="project-card">
+          <article>
+            <h3>sql-cookbook</h3>
+            <p class="pitch">
+              Advanced SQL patterns — window functions, recursive CTEs, gaps-and-islands,
+              sessionization, pivots — each runnable and tested on DuckDB.
+            </p>
+            <ul class="tags">
+              <li>SQL</li><li>DuckDB</li><li>pytest</li>
+            </ul>
+            <p class="stats">12/12 recipes tested · 107 tests · window functions 1.6&ndash;2.5&times; faster than correlated subqueries</p>
+            <a class="repo-link" href="https://github.com/Prithv122/sql-cookbook" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>cohort-funnel</h3>
+            <p class="pitch">
+              Cohort retention and step-ordered funnel analysis over a raw event stream, with
+              a Streamlit dashboard and a running argument with the naive version of both.
+            </p>
+            <ul class="tags">
+              <li>Product analytics</li><li>DuckDB</li><li>Streamlit</li>
+            </ul>
+            <p class="stats">The naive funnel reports 2.3&times; the true signup&rarr;subscribe conversion (6.17% vs 2.71%)</p>
+            <a class="repo-link" href="https://github.com/Prithv122/cohort-funnel" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://cohort-funnel-3msbfxga23gaevkbhy9haa.streamlit.app" target="_blank" rel="noopener noreferrer">
+              Live dashboard <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>messy-data-eda</h3>
+            <p class="pitch">
+              Cleaning pipeline and EDA on messy e-commerce sales data, with every decision
+              documented and a data dictionary.
+            </p>
+            <ul class="tags">
+              <li>pandas</li><li>Data cleaning</li><li>EDA</li>
+            </ul>
+            <p class="stats">12,180 raw rows &rarr; 12,000 · cleaning changed the top payment method (&ldquo;paypal&rdquo;, 709 &rarr; Cash on Delivery, 2,070)</p>
+            <a class="repo-link" href="https://github.com/Prithv122/messy-data-eda" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>scrollytelling</h3>
+            <p class="pitch">
+              Three scroll-driven data stories about India — electricity, heat and PM2.5 —
+              drawn by a hand-built vanilla-JS SVG chart engine, no chart library.
+            </p>
+            <ul class="tags">
+              <li>Vanilla JS</li><li>SVG</li><li>Data storytelling</li>
+            </ul>
+            <p class="stats">Solar generation grew 4.3&times; from 2019 to 2025 · 0 clear rises across 12 testable heat series</p>
+            <a class="repo-link" href="https://github.com/Prithv122/scrollytelling" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://prithv122.github.io/scrollytelling/" target="_blank" rel="noopener noreferrer">
+              Live site <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>fastapi-service</h3>
+            <p class="pitch">
+              Multi-user REST API for NSE equity research and a swing-trade journal: async
+              SQLAlchemy 2.0, Alembic, Neon Postgres and JWT auth, deployed on Render.
+            </p>
+            <ul class="tags">
+              <li>FastAPI</li><li>PostgreSQL</li><li>JWT</li>
+            </ul>
+            <p class="stats">27 tests · 86% coverage · 4 cross-user isolation tests</p>
+            <a class="repo-link" href="https://github.com/Prithv122/fastapi-service" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://fastapi-service-alx5.onrender.com/docs" target="_blank" rel="noopener noreferrer">
+              Live API docs <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>observable-api</h3>
+            <p class="pitch">
+              A read-heavy analytics API built to be operated: per-client rate limiting, a
+              single-flight cache, correlated JSON logs, Prometheus metrics and a Locust load
+              test.
+            </p>
+            <ul class="tags">
+              <li>FastAPI</li><li>Redis</li><li>Prometheus</li>
+            </ul>
+            <p class="stats">Cache: 2.7&times; the throughput and p95 660 &rarr; 160 ms at a 99.0% hit rate</p>
+            <a class="repo-link" href="https://github.com/Prithv122/observable-api" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>websocket-live</h3>
+            <p class="pitch">
+              A WebSocket push server and live dashboard, built to measure what one client
+              that stops reading does to everyone else.
+            </p>
+            <ul class="tags">
+              <li>WebSockets</li><li>FastAPI</li><li>Vanilla JS</li>
+            </ul>
+            <p class="stats">4 KB messages, 10% of 200 clients stalled: naive fan-out delivered 0%, per-client queues p95 23.6 ms</p>
+            <a class="repo-link" href="https://github.com/Prithv122/websocket-live" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>offline-pwa</h3>
+            <p class="pitch">
+              Offline-first gym log with a plate calculator: reads from IndexedDB, writes
+              through an outbox, and one idempotent last-write-wins sync endpoint.
+            </p>
+            <ul class="tags">
+              <li>Service worker</li><li>IndexedDB</li><li>Cloudflare D1</li>
+            </ul>
+            <p class="stats">1,000 of 1,000 seeded fault-injection runs pass all 7 sync checks, on both test stacks</p>
+            <a class="repo-link" href="https://github.com/Prithv122/offline-pwa" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://offline-pwa-dou.pages.dev" target="_blank" rel="noopener noreferrer">
+              Live app <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>flask-crud</h3>
+            <p class="pitch">
+              Server-rendered job-application tracker and bookmark manager: Flask and Jinja,
+              SQLite without an ORM, sessions, auth and CSRF protection.
+            </p>
+            <ul class="tags">
+              <li>Flask</li><li>SQLite</li><li>Auth</li>
+            </ul>
+            <p class="stats">25 tests · 90% coverage</p>
+            <a class="repo-link" href="https://github.com/Prithv122/flask-crud" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>css-components</h3>
+            <p class="pitch">
+              CSS-only component library — buttons, cards, forms and a modal — with zero
+              JavaScript and no build step.
+            </p>
+            <ul class="tags">
+              <li>CSS</li><li>Accessibility</li><li>No JS</li>
+            </ul>
+            <p class="stats">Lighthouse 100/100/100/100 · 0 script tags</p>
+            <a class="repo-link" href="https://github.com/Prithv122/css-components" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://prithv122.github.io/css-components/" target="_blank" rel="noopener noreferrer">
+              Live demo <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>file-organiser</h3>
+            <p class="pitch">
+              Safe file-management engine — scan, organise, and dedupe with tiered hashing, a
+              transaction log with full undo, and protected-path guardrails.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>CLI design</li><li>Transactional correctness</li>
+            </ul>
+            <p class="stats">168 tests · 92% coverage · 25–28&times; faster dedupe than naive full hashing</p>
+            <a class="repo-link" href="https://github.com/Prithv122/file-organiser" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>filetx</h3>
+            <p class="pitch">
+              Transactional undo engine for batch file operations, published as a real PyPI
+              package — journal-before-apply ordering, idempotent recovery.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>Packaging</li><li>PyPI</li>
+            </ul>
+            <p class="stats">73 tests · 100% coverage · published on PyPI</p>
+            <a class="repo-link" href="https://github.com/Prithv122/filetx" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="repo-link" href="https://pypi.org/project/filetx/" target="_blank" rel="noopener noreferrer">
+              View on PyPI <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>ledger-cli</h3>
+            <p class="pitch">
+              Double-entry finance ledger with a SQLite backend and a Rich terminal UI, plus
+              bank CSV import with idempotent deduplication.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>SQLite</li><li>Data modeling</li>
+            </ul>
+            <p class="stats">36 tests · 99% coverage</p>
+            <a class="repo-link" href="https://github.com/Prithv122/ledger-cli" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>async-crawler</h3>
+            <p class="pitch">
+              Async scraper and link checker — bounded concurrency, robots.txt compliance,
+              per-host rate limiting, and exponential backoff on retryable errors.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>asyncio</li><li>httpx</li>
+            </ul>
+            <p class="stats">82 tests · 100% coverage · 5.3&times; concurrency speedup, measured</p>
+            <a class="repo-link" href="https://github.com/Prithv122/async-crawler" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>logstats</h3>
+            <p class="pitch">
+              Streaming log parser and report generator, stdlib only — never materializes a
+              full log file in memory, even at millions of lines.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>Stdlib only</li><li>Streaming</li>
+            </ul>
+            <p class="stats">28 tests · 99% coverage</p>
+            <a class="repo-link" href="https://github.com/Prithv122/logstats" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>pytemplate</h3>
+            <p class="pitch">
+              Reusable project scaffold generator — renders a pinned uv/ruff/pytest/CI
+              boilerplate set from Python string templates, no external dependency.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>Tooling</li><li>CI/CD</li>
+            </ul>
+            <p class="stats">8 files generated per new project · 100% of branches exercised by the tests</p>
+            <a class="repo-link" href="https://github.com/Prithv122/pytemplate" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+
   </main>
 
   <footer class="site-footer">

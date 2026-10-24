@@ -15,16 +15,17 @@ push to `main`: `ci.yml` runs `html-validate` for structural correctness, then L
 against the built `public/` directory, asserting Performance/Accessibility/Best
 Practices/SEO all ≥95 — a failing score fails the build, it's not just a number I glance at.
 `deploy.yml` runs `actions/deploy-pages` to publish to GitHub Pages. Content-wise: a header
-with a dark-mode toggle, a CSS Grid of six project cards (one per shipped repo, each with a
-real one-line pitch, tech tags, and measured stats pulled from that repo's own README), and a
-footer with contact links.
+with a dark-mode toggle and a jump list, four role sections (data science & ML, AI
+engineering, data engineering, analytics & Python) holding 35 project cards in CSS Grids (one
+per shipped repo, each with a real one-line pitch, tech tags, and a measured stat copied from
+that repo's own README), and a footer with contact links.
 
 ### Q2. Why did you choose ___ over ___?
 
 _A:_ Vanilla HTML/CSS/JS over a static-site generator or framework. The catalog entry for this
 project explicitly asks for CSS Grid/Flexbox depth, not framework reliance — the whole point is
 proving I can build a real, accessible, responsive layout without Tailwind or React doing the
-work for me. A generator would also add a build step and a dependency tree to a six-card page
+work for me. A generator would also add a build step and a dependency tree to a page of static cards
 that doesn't need one. The tradeoff I accepted: adding project #7 means hand-editing HTML, not
 just appending to a data file — documented in the README's "what I'd change at 100× scale"
 section, because at real scale (hundreds of projects) that tradeoff stops being worth it.
@@ -36,7 +37,11 @@ traffic isn't the failure mode. The weakest part is maintainability: every new s
 means manually writing a new `<article>` block with the pitch, tags, and stats by hand. That's
 fine at 6 projects, tedious at 20, and actively error-prone at 47 — the exact point where a
 copy-paste mistake would let a stale metric sit in a card unnoticed. If I were scaling this,
-the cards would be generated from a single JSON/YAML source of truth instead.
+the cards would be generated from a single JSON/YAML source of truth instead. At 35 cards
+(the October 2026 refresh) I kept it hand-written, to keep the no-build rule, and paid for that
+by checking every stats line against its repo's README one by one — which caught one stale
+number from the first version (`pytemplate`'s card said 98% coverage; its README says 100% of
+branches).
 
 ### Q4. How do you know it works? What did you measure, and against what baseline?
 
@@ -67,8 +72,8 @@ blocking script. For a personal portfolio page, that's a fair trade.
 
 ## 30-second pitch
 
-Six other repos are shipped, tested, and CI-green, but a resume linking to six separate GitHub
-URLs asks the reader to do all the work of tying them together. I built a single hub page —
+35 other repos are shipped and tested, but a resume linking to that many separate GitHub URLs
+asks the reader to do all the work of tying them together. I built a single hub page —
 vanilla HTML/CSS/JS, no framework — with real pitches and real measured numbers pulled from
 each repo, dark mode that respects system preference by default, and a CI pipeline that
 actually gates on Lighthouse scores rather than just reporting them. It's live on GitHub
