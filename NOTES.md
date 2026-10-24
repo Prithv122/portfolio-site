@@ -110,4 +110,4 @@ Keep it rough. Rough is the point.
 ## Open questions
 
 - [ ] Resume/CV PDF link in the footer — deferred, user will add later.
-- [ ] `INTERVIEW.md` / `RESUME_BULLET.md` still need answers before shipping.
+- [x] `INTERVIEW.md` / `RESUME_BULLET.md` answered before shipping (2026-08-29, `55e53de`).
