@@ -56,7 +56,8 @@ flowchart LR
 
 _All four scores are asserted in CI (`lighthouserc.json`, ≥0.95 on each), not just measured
 once locally — a regression fails the build. See the `CI` workflow run on the latest commit
-for the actual numbers._
+for the actual numbers._ Re-measured on 2026-10-24 after the page grew from 6 to 35 cards:
+still 100 on all four categories in all three runs.
 
 ## 6. How to run
 

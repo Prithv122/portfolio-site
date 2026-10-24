@@ -62,6 +62,41 @@ Keep it rough. Rough is the point.
   the difference. Worth carrying forward: when a gate item surfaces an implicit dependency,
   the default response should be "can this be removed" before "how do I explain it."
 
+### 2026-10-24 — refresh: six cards → every shipped project (35), grouped by role
+- **Why:** the page still listed only the six Wave-1 repos while ~30 more had shipped. Adding
+  only the newest few would have left a visible hole, so this was one pass over all of them.
+- **Source list:** `CATALOG.md` rows marked shipped, cross-checked against
+  `gh repo list` for visibility. #29 websocket-live was published earlier the same day, so it
+  is in. #37 and #39 were folded into #22 and #38; #38, #40 and #42 onward are not shipped.
+- **Numbers:** every stats line was copied from that repo's README §5 as it stands on its
+  public `main` (`git show origin/main:README.md`), not from the local working tree or from
+  `PROGRESS.md`. Two catches:
+  - `pytemplate`'s old card said "98% coverage"; its README says 100% of branches exercised
+    and gives no line-coverage figure. Card now quotes the README.
+  - `elt-dbt-dagster`'s README says 32/32 dbt tests on `main`, but its unmerged
+    `semantic-layer` branch found the real count was 26 (28 after its fix). The card uses
+    numbers both versions state identically (7,310 rows; Chennai 66 → 80 heat days) so it
+    stays true whether or not that branch is merged.
+- **Grouping:** four sections in the order the resume's role list reads. The fourth
+  (analytics & Python development, 16 cards) is the biggest; inside it the analytics cards come
+  first, then APIs and web, then the small Python tools.
+- **Still hand-written HTML.** INTERVIEW Q3 predicted this gets error-prone near 47 cards. At
+  35 the no-build rule still won; the price was checking each card against its README by hand.
+- **Local Lighthouse on Windows broke:** `chrome-launcher` 1.2.1 throws `EPERM` deleting its
+  temp profile right after the audit finishes (the folder is gone a moment later — a file-lock
+  race on this host, not the page). Same with the sandbox off and with Chrome's crash reporter
+  disabled. CI was replayed in a Linux `node:22-bookworm` container instead, which is closer
+  to the hosted Ubuntu runner anyway.
+- **CI replay (hosted Actions unavailable until about 2026-11-02):** fresh `git clone` of the
+  commit inside the container, `npm ci` per job, then `ci.yml`'s steps in order. On
+  `7481786`: `npm run validate` clean; `npm run lhci` passed every assertion, **100 / 100 /
+  100 / 100 on all three runs** (Lighthouse 12.6.1, HeadlessChrome 152, 35 cards). Differences
+  from the hosted runner: Debian 12 instead of Ubuntu; the container needed `apt-get update`
+  plus `npx puppeteer browsers install chrome --install-deps` for Chrome's system libraries,
+  and `--shm-size=2g` (Docker's default 64 MB `/dev/shm` crashes the Chrome tab); reports were
+  written to disk (`LHCI_UPLOAD__TARGET=filesystem`) instead of uploaded to temporary public
+  storage, so nothing about the unpublished page left the machine.
+
 ---
 
 ## Rejected approaches
