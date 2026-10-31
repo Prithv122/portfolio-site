@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <title>Prithvi M — Portfolio</title>
-  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer / Data Analyst portfolio — 40 shipped, tested projects, grouped by role, each with a measured result from its own README." />
+  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer / Data Analyst portfolio — 42 shipped, tested projects, grouped by role, each with a measured result from its own README." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -18,7 +18,7 @@
       <h1>Prithvi M</h1>
       <p class="tagline">Data Scientist · AI Engineer · Data Engineer · Data Analyst</p>
       <p class="intro">
-        40 shipped, tested projects, grouped by the role they speak to. Every number on a card
+        42 shipped, tested projects, grouped by the role they speak to. Every number on a card
         comes from that repo's own README, where the method and the caveats sit next to it.
       </p>
       <nav class="group-nav" aria-label="Project groups">
@@ -232,6 +232,24 @@
 
         <li class="project-card">
           <article>
+            <h3>agent-system</h3>
+            <p class="pitch">
+              Does letting an LLM repair its own SQL from the database's error messages make its
+              answers more accurate? A question-to-SQL agent, with no agent framework, on a
+              read-only path that cannot write.
+            </p>
+            <ul class="tags">
+              <li>LLM agents</li><li>DuckDB</li><li>Ollama</li>
+            </ul>
+            <p class="stats">25.0% correct one-shot vs 27.8% with repairs, +2.8 points [0.0, +8.3], H1 not supported · 0 writes in the safety suite</p>
+            <a class="repo-link" href="https://github.com/Prithv122/agent-system" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
             <h3>classical-nlp</h3>
             <p class="pitch">
               TF-IDF vs LSA vs embeddings, Indic-aware text normalisation, and a cost-priced
@@ -242,6 +260,24 @@
             </ul>
             <p class="stats">Calibrated TF-IDF router: 589.0 vs 939.0 cost per 1,000 tickets for the local 7B LLM (95% CI &minus;397.7 to &minus;299.3)</p>
             <a class="repo-link" href="https://github.com/Prithv122/classical-nlp" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>finetune-transformer</h3>
+            <p class="pitch">
+              At how many labelled examples per intent does a fine-tuned DistilBERT beat TF-IDF and
+              frozen-embedding baselines? A paired, pre-registered learning curve on BANKING77,
+              trained on a Kaggle GPU.
+            </p>
+            <ul class="tags">
+              <li>Transformers</li><li>PyTorch</li><li>Kaggle GPU</li>
+            </ul>
+            <p class="stats">Null result: frozen bge-small + LR beat fine-tuned DistilBERT at every size, 0.932 vs 0.918 macro-F1 on all the data</p>
+            <a class="repo-link" href="https://github.com/Prithv122/finetune-transformer" target="_blank" rel="noopener noreferrer">
               View on GitHub <span aria-hidden="true">&rarr;</span>
             </a>
           </article>
