@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <title>Prithvi M — Portfolio</title>
-  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer / Data Analyst portfolio — 36 shipped, tested projects, grouped by role, each with a measured result from its own README." />
+  <meta name="description" content="Data Scientist / AI Engineer / Data Engineer / Data Analyst portfolio — 38 shipped, tested projects, grouped by role, each with a measured result from its own README." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -18,7 +18,7 @@
       <h1>Prithvi M</h1>
       <p class="tagline">Data Scientist · AI Engineer · Data Engineer · Data Analyst</p>
       <p class="intro">
-        36 shipped, tested projects, grouped by the role they speak to. Every number on a card
+        38 shipped, tested projects, grouped by the role they speak to. Every number on a card
         comes from that repo's own README, where the method and the caveats sit next to it.
       </p>
       <nav class="group-nav" aria-label="Project groups">
@@ -153,7 +153,7 @@
 
     <section class="project-group" aria-labelledby="ai-engineering">
       <h2 id="ai-engineering" class="section-heading">AI engineering</h2>
-      <p class="section-intro">Retrieval, extraction, routing and judging with LLMs, classical NLP and computer vision — each scored against ground truth, not eyeballed.</p>
+      <p class="section-intro">Retrieval, extraction, routing, judging and tool access with LLMs, classical NLP and computer vision — each scored against ground truth, not eyeballed.</p>
       <ul class="project-grid">
 
         <li class="project-card">
@@ -214,6 +214,24 @@
 
         <li class="project-card">
           <article>
+            <h3>mcp-server</h3>
+            <p class="pitch">
+              A Model Context Protocol server giving an AI assistant read-only, allowlisted access
+              to a TPC-H warehouse, plus a differential attack suite that checks the query guards
+              still hold when the caller is a model speaking JSON-RPC.
+            </p>
+            <ul class="tags">
+              <li>MCP</li><li>DuckDB</li><li>Security testing</li>
+            </ul>
+            <p class="stats">First attack run found 5 bypasses, all fixed · final runs: 0 bypasses and 0 input echoes across 111 payloads, over both transports</p>
+            <a class="repo-link" href="https://github.com/Prithv122/mcp-server" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
             <h3>classical-nlp</h3>
             <p class="pitch">
               TF-IDF vs LSA vs embeddings, Indic-aware text normalisation, and a cost-priced
@@ -246,6 +264,24 @@
             </a>
             <a class="repo-link" href="https://huggingface.co/Prithv122/custom-detector" target="_blank" rel="noopener noreferrer">
               Weights on Hugging Face <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </li>
+
+        <li class="project-card">
+          <article>
+            <h3>segmentation</h3>
+            <p class="pitch">
+              Does a trained U-Net beat the NDWI threshold an analyst would try first, on
+              Sentinel-2 scenes it never saw? Surface-water masks, pre-registered and scored once
+              on 16 held-out scenes.
+            </p>
+            <ul class="tags">
+              <li>Computer vision</li><li>PyTorch U-Net</li><li>Sentinel-2</li>
+            </ul>
+            <p class="stats">Test water IoU 0.946 (U-Net) vs 0.960 (NDWI-Otsu), gap &minus;0.014 [&minus;0.039, +0.012] · H1 not supported</p>
+            <a class="repo-link" href="https://github.com/Prithv122/segmentation" target="_blank" rel="noopener noreferrer">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
             </a>
           </article>
         </li>
