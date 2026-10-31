@@ -114,6 +114,38 @@ Keep it rough. Rough is the point.
   validate clean; Lighthouse CI passed every assertion, 100 / 100 / 100 / 100 on all three runs. Same differences
   from the hosted runner as the 2026-10-24 entry (Debian, `--install-deps`, `--shm-size=2g`, filesystem upload).
 
+### 2026-11-01 — six new cards (42 cards), resume colour system
+
+- **Cards, all public with hosted CI green at the shipped commit, all stats lines checked against that README:**
+
+  | Card | Group, position | Commit | Numbers on the card, where the README states them |
+  |---|---|---|---|
+  | `mcp-server` (#44) | AI engineering, after `llm-eval-harness` | `92615cc` | §5.1 table: first run 5 bypasses; final runs 0 bypasses, 0 echoes, 111 payloads, both transports |
+  | `agent-system` (#43) | AI engineering, after `mcp-server` | `5013ea2` | Result line and §5: 25.0% vs 27.8%, +2.8 points [0.0, +8.3], hypothesis not supported; safety suite 0 writes |
+  | `finetune-transformer` (#41) | AI engineering, after `classical-nlp` (same BANKING77 data) | `2ee6e22` | Result line and §5 table: embeddings beat fine-tuning at every k; 0.932 vs 0.918 at full data; rule 3 "null result" |
+  | `segmentation` (#45) | AI engineering, after `custom-detector` | `436624c` | §5 tables: test IoU 0.946 vs 0.960, gap −0.014 [−0.039, +0.012], H1 not supported |
+  | `video-analytics` (#46) | AI engineering, after `segmentation` | `3abf2c1` | Result line and §5: recall ≤ 0.19 in every configuration, switches ≤ 5% of errors, 3 of 4 claims not supported |
+  | `geo-graph` (#40) | Analytics, after `cohort-funnel` | `46566de` | Result line and §5 table: 100.00% vs 97.09% of 1.06 million residents, 2.91 pp [1.28, 4.98], H1 not supported |
+
+  The geo-graph card says nothing about the walking distances being checked against an independent router: its
+  README lists that owner spot-check as not done yet. Header, meta description, README and GUIDELINES say 42.
+- **Colours now match the resume PDFs** (`D:\Resume`, read from the PDF itself: ink `#201e1d`, accent `#ae1800`).
+  Light: white page, warm greys, ink text, red accent; like the resume, the role line is in the accent and a 2 px ink
+  rule closes the header. Dark: the same hues on a warm near-black (`#171514`, cards `#221e1c`) with a coral accent
+  (`#ff8a70`) that reads as the same red. Contrast, computed per WCAG for every text/background pair: lowest is
+  muted text on a tag, 6.39:1 (light) and 7.42:1 (dark); accent on page 7.17:1 and 7.91:1. Skip-link text uses the
+  page background so it holds on either accent. Favicon recoloured to the accent.
+- **Browser checks** (pane hidden, so viewports were emulated): 1280 px three columns, 375 px one column, no
+  horizontal overflow, no console errors, both themes rendered with the computed colours above.
+- **CI replay** (`node:22-bookworm`, fresh clone, `npm ci` per job, `ci.yml` in order, same differences as before):
+  `0111fbf` validate clean, Lighthouse assertions passed; Accessibility, Best Practices and SEO 100 on all three runs,
+  Performance 93 / 100 / 98 with the machine busy (the assertion uses the best run, LHCI's default).
+  `dab47e2` (colours) and `4b8d47e` (40 cards): validate clean, 100 / 100 / 100 / 100 on all three runs, the
+  `color-contrast` audit passing. **`5e25f6a` (42 cards, the last site change):** validate clean, every assertion
+  passed, Accessibility, Best Practices and SEO 100 on all three runs, Performance 96 / 100 / 100, `color-contrast`
+  passing. Lighthouse runs in light mode only; dark-mode contrast rests on the computed ratios above.
+  This NOTES entry is committed after that replay and changes nothing under `public/`.
+
 ---
 
 ## Rejected approaches
