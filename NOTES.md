@@ -146,6 +146,21 @@ Keep it rough. Rough is the point.
   passing. Lighthouse runs in light mode only; dark-mode contrast rests on the computed ratios above.
   This NOTES entry is committed after that replay and changes nothing under `public/`.
 
+### 2026-11-01 — multimodal-search card (43 cards)
+
+- `multimodal-search` (#47) added in AI engineering after `video-analytics`, with the other image cards. The repo
+  is public at `652b646` (hosted CI green on `478337f`; `652b646` changes only docs). Header, meta description,
+  README and GUIDELINES say 43.
+- **Stats line checked against that README at `652b646`:** reading-slice nDCG@10 +0.066 [+0.054, +0.079] against
+  the pre-registered +0.10 bar (H1 FAIL) and visual slice −0.008 (H2 PASS) are its headline and verdict table. The
+  owner's hand-tag slices are still pending there, so nothing from them is on the card.
+- **Checks on `6d80d5d`:** html-validate clean; render at 375 px with no overflow or console errors. CI steps were
+  taken from the commit's own `ci.yml` (`validate`: `npm ci`, `npm run validate`; `lighthouse`: `npm ci`,
+  `npm run lhci`). The **validate job passed** on a fresh Windows clone (`npm ci` with Chrome's download skipped,
+  which that job never uses). **The lighthouse job was not replayed:** Docker Desktop was stopped (another
+  project's timed benchmark depends on it) and Lighthouse on Windows still hits the `EPERM` profile-cleanup crash.
+  The last Lighthouse replay is `5e25f6a`, one card earlier, which passed every assertion.
+
 ---
 
 ## Rejected approaches
